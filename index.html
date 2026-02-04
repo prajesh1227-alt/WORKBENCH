@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stark HUD: City Protocol</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Courier New', Courier, monospace; }
+
+        /* WEBCAM FEED: Border removed */
+        #webcam {
+            position: absolute; bottom: 20px; right: 20px; width: 240px;
+            transform: scaleX(-1); border: none; border-radius: 10px; opacity: 0.8;
+        }
+
+        #overlay { position: absolute; top: 30px; left: 30px; color: #00d2ff; text-shadow: 0 0 8px #00d2ff; }
+
+        /* HUD ELEMENTS */
+        #hud-clock { position: absolute; top: 30px; right: 30px; text-align: right; color: #00d2ff; text-shadow: 0 0 10px #00d2ff; }
+        #time { font-size: 2.5rem; font-weight: bold; }
+        #date { font-size: 1rem; opacity: 0.8; letter-spacing: 2px; }
+
+        /* TOP CENTER GIF */
+        #iris-core {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            border: none;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* BOTTOM LEFT GIF: Border and shadow removed */
+        #hud-gif {
+            position: absolute; bottom: 50px; left: 20px; width: 190px;
+            border: none; border-radius: 8px; opacity: 0.7;
+            pointer-events: none;
+        }
+
+        #startBtn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            padding: 15px 30px; background: #00d2ff; border: none;
+            cursor: pointer; font-weight: bold; z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <button id="startBtn">ENGAGE SYSTEM</button>
+    <div id="overlay">JARVIS: STANDING BY...</div>
+
+    <div id="hud-clock">
+        <div id="time">00:00:00</div>
+        <div id="date">CALIBRATING...</div>
+    </div>
+
+    <img id="iris-core" src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/714/211/datas/original.gif">
+
+    <img id="hud-gif" src="https://i.pinimg.com/originals/df/1b/6c/df1b6c52cc42fa34f30c450f2c3cd77a.gif">
+
+    <video id="webcam" autoplay playsinline></video>
+    <div id="container"></div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
